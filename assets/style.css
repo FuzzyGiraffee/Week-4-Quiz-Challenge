@@ -1,0 +1,37 @@
+body{
+    margin:0 0 0 0
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    background: pink;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.quizContent {
+    display:flex;
+    flex-direction: column;
+    background: purple;
+    margin: 20px 30% 0 30%;
+
+    text-align: center;
+   
+}
+/* 
+.quizBody {
+ 
+    
+} */
+
+
+#quizButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color:blue;
+    width: 200px;
+    
+}
