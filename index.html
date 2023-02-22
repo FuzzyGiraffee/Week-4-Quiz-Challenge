@@ -11,22 +11,26 @@
         <h1 class="timer"></h1>
 
     </header>
-    <section class="quizContent">
+
+    <section class="quizContainer">
         <div class="quizBody">
-            <h2 
+            <h2 id="quizTitle"
             data-state=""
-            
             >Coding Quiz Challenge</h2>
-            <p id>Try to answer as many problems as possible as quickly as possible. Each wrong answer will subtract 10 seconds, and each correct will reward 1 point. Good luck!</p>
+            <p id="quizContent">Try to answer as many problems as possible as quickly as possible. Each wrong answer will subtract 10 seconds, and each correct will reward 1 point. Good luck!</p>
+
         </div>
+        
         <button 
         class="quizButton"
         data-state=""
         >Start Quiz</button>
     </section>
 
-
-
+    <section id="gameSection" class="hidden">
+        <div id="questionTitle"></div>
+        <div id="answerBody"></div>
+    </section>
 
     <script src = "assets/script.js"></script>
 </body>

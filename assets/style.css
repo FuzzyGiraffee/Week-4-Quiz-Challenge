@@ -11,7 +11,7 @@ body{
     padding-right: 10px;
 }
 
-.quizContent {
+.quizContainer {
     display:flex;
     flex-direction: column;
     background: purple;
@@ -33,4 +33,12 @@ body{
     color:blue;
     width: 200px;
     
+}
+
+.hidden{
+    display:none
+}
+
+.shown {
+    display:block
 }

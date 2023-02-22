@@ -1,4 +1,4 @@
-//Create button
+//Create button 
 //Display current user score
 //create list of stored questions with associated answers
 //when the user clicks the button, a event listener detects the input
