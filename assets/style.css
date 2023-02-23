@@ -14,7 +14,7 @@ body{
 .quizContainer {
     display:flex;
     flex-direction: column;
-    background: purple;
+    background: white;
     margin: 20px 30% 0 30%;
 
     text-align: center;
@@ -35,19 +35,17 @@ body{
     
 }
 
-.hidden{
-    display:none
-}
 
-.shown {
-    display:block
+.answerChoice{
+    color:white;
+    background-color: gray;
+    border-radius: 10px;
 }
-
 
 #gameSection{
     display:flex;
     flex-direction: column;
-    background: purple;
+    background: white;
     margin: 20px 30% 0 30%;
 
     text-align: center;
@@ -55,4 +53,12 @@ body{
 
 #questionTitle{
     font-size: 20px ;
+}
+
+.hidden{
+    display:none
+}
+
+.shown{
+    display:block
 }

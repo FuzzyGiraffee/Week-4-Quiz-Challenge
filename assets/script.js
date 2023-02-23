@@ -14,12 +14,9 @@ var ansUser = "";
 var ansCorrect = "";
 var questionCount = 0;
 
-//Empty score variables
-
+//Empty score variable
 var leaderBoard = [];
-//Stores initial webpage layout
 
-var quizDefault = quizEl;
 //Default timer max length
 var timeLeft = 61;
 
@@ -48,22 +45,22 @@ const myQuestions = [
       answers: [
          "Angular",
          "jQuery",
-         "RequireJS",
          "ESLint"
       ],
       correctAnswer: "ESLint"
     }
   ];
-//Game End function
 
+
+  //Game End function
 function gameEnd (){
-  if (timeLeft === 0 && questionCount === 2){
     //hide game seciton, show quiz container
     quizEl.classList.remove("hidden")
     quizEl.classList.add("shown")
+
     gameEL.classList.remove("shown")
     gameEL.classList.add("hidden")
-  }
+
 }
 
 
@@ -73,13 +70,15 @@ function startTimer (){
         timeLeft--;
         timeEl.textContent = "Time: " + timeLeft
 
-        if(timerInterval === 0 ){
-        
+        if(timeLeft <= 0){
+          clearInterval(timerInterval);
+          gameEnd();
+    
     }
-}, 1000);
+  }, 1000);
 }
 
-//Construct Questions
+//Construct Questions Function
 function displayQuestions(array) {
     ansCorrect = array[questionCount].correctAnswer
     questionTitleEl.textContent = array[questionCount].question
@@ -88,41 +87,28 @@ function displayQuestions(array) {
     console.log(allAnswers)
        
     for (let i = 0; i < allAnswers.length; i++) {
-            const element = allAnswers[i];
-            
-            const answerButton = document.createElement("button")
-            answerButton.textContent = element
-           
-            answerBodyEL.append(answerButton)
-            answerButton.addEventListener("click", questionCheck)
+            const answerChoice = allAnswers[i];
+            const answerEl = document.getElementById(`answer${i+1}`)
+
+            answerEl.textContent = answerChoice
         }
 }
 
-  //TODO  build and reference funciton Time and question positon to see if game should end
   //TODO  create quiz ending funciton (toggle hidden and visible)
   //TODO  create hischore page
-  // TODO do styling in the CSS file(maybe as a break!)
+  //TODO do styling in the CSS file(maybe as a break!)
+  //TODO store user scores. reference stored user scores in highschore page
+
+
 function placeholderReference (){}
-//Answer Checker
-function questionCheck(){
-  //increase user score by 1 per correct answer
-  if (placeholderReference){
-  }else if (answerButton.value = myQuestions[questionCount].correctAnswer){
-    leaderBoard = leaderBoard ++
-  } else{
-    timeLeft = timeLeft --
-  }
-
-}
-
 
 
 function startGame (event) {
+    timeLeft = 61;
     var element = event.target;
     var state = element.getAttribute("data-state");
     
     quizEl.classList.add("hidden")
-
     gameEL.classList.remove("hidden")
     gameEL.classList.add("shown")
     
@@ -131,40 +117,25 @@ function startGame (event) {
     startTimer();
         
     displayQuestions(myQuestions);
-    
-
-    //TODO: change to class ex: remove class visible, add class hidden
-
-
-    //Toggles Hidden Status
-    // if (state == "visible"){
-    //     element.setAttribute("data-state", "hidden")
-
-    //     //display questions
-    //     function test1 (){
-    //     for (i=1; i > questionCount; i++){
-    //         titleEL.innerHTML = question[i]    
-    //     }
-    //     }
-
-    // }else{
-    //     element.setAttribute("data-state", "visible")
-    // }
-    // state = element.getAttribute("data-state");
-
 
     console.log(state)
 
 
-   
-
   
 }
+
 //event listener for button click
 submitEl.addEventListener("click", startGame);
 
-
-//more timer logic
-if (timeLeft === 0){
-    //save then display score and then return to default page
-}
+answerBodyEL.addEventListener("click", ({target})=>{
+  if(target.matches(".answerChoice")) {
+    if(target.textContent === myQuestions[questionCount.correctAnswer]){
+      questionCount++
+      displayQuestions(myQuestions)
+    }else {
+      timeLeft = timeLeft-10
+      questionCount++
+      displayQuestions(myQuestions)
+    }
+  }
+})
