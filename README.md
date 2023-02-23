@@ -9,7 +9,7 @@ Website allows user to take timed quiz and store score for each attempt. Javascr
 ## Installation
 
 
-No installation required, hosted at 
+No installation required, hosted at https://fuzzygiraffee.github.io/Week-4-Quiz-Challenge/
 
 
 ## Usage
