@@ -9,11 +9,14 @@ var questionTitleEl = document.querySelector("#questionTitle");
 var answerBodyEL = document.querySelector("#answerBody");
 var gameEL = document.querySelector("#gameSection");
 
-//Empty 
+//Empty answer key variables
 var ansUser = "";
 var ansCorrect = "";
 var questionCount = 0;
 
+//Empty score variables
+
+var leaderBoard = [];
 //Stores initial webpage layout
 
 var quizDefault = quizEl;
@@ -51,6 +54,18 @@ const myQuestions = [
       correctAnswer: "ESLint"
     }
   ];
+//Game End function
+
+function gameEnd (){
+  if (timeLeft === 0 && questionCount === 2){
+    //hide game seciton, show quiz container
+    quizEl.classList.remove("hidden")
+    quizEl.classList.add("shown")
+    gameEL.classList.remove("shown")
+    gameEL.classList.add("hidden")
+  }
+}
+
 
 //Timer Funciton
 function startTimer (){
@@ -64,23 +79,42 @@ function startTimer (){
 }, 1000);
 }
 
-//Question Key
+//Construct Questions
 function displayQuestions(array) {
     ansCorrect = array[questionCount].correctAnswer
     questionTitleEl.textContent = array[questionCount].question
-
+    
     var allAnswers = array[questionCount].answers
     console.log(allAnswers)
        
     for (let i = 0; i < allAnswers.length; i++) {
             const element = allAnswers[i];
-            console.log(element)
-            const answerbutton = document.createElement("button")
-            answerbutton.textContent = element
-            console.log(answerbutton)
-            answerBodyEL.append(answerbutton)
+            
+            const answerButton = document.createElement("button")
+            answerButton.textContent = element
+           
+            answerBodyEL.append(answerButton)
+            answerButton.addEventListener("click", questionCheck)
         }
 }
+
+  //TODO  build and reference funciton Time and question positon to see if game should end
+  //TODO  create quiz ending funciton (toggle hidden and visible)
+  //TODO  create hischore page
+  // TODO do styling in the CSS file(maybe as a break!)
+function placeholderReference (){}
+//Answer Checker
+function questionCheck(){
+  //increase user score by 1 per correct answer
+  if (placeholderReference){
+  }else if (answerButton.value = myQuestions[questionCount].correctAnswer){
+    leaderBoard = leaderBoard ++
+  } else{
+    timeLeft = timeLeft --
+  }
+
+}
+
 
 
 function startGame (event) {
@@ -91,6 +125,9 @@ function startGame (event) {
 
     gameEL.classList.remove("hidden")
     gameEL.classList.add("shown")
+    
+    //create for loop to style and add button sleector to all gameEl button elements
+
     startTimer();
         
     displayQuestions(myQuestions);

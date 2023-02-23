@@ -42,3 +42,17 @@ body{
 .shown {
     display:block
 }
+
+
+#gameSection{
+    display:flex;
+    flex-direction: column;
+    background: purple;
+    margin: 20px 30% 0 30%;
+
+    text-align: center;
+}
+
+#questionTitle{
+    font-size: 20px ;
+}
